@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="text-center text-xl font-bold">2-Cluster KMeans Results</h1>
+<table class="table-auto w-full mt-4 border-collapse border border-gray-400">
+    <thead>
+        <tr>
+            <th class="px-4 py-2 border border-gray-400">Nomor</th>
+            <th class="px-4 py-2 border border-gray-400">Nama</th>
+            <th class="px-4 py-2 border border-gray-400">NIK</th>
+            <th class="px-4 py-2 border border-gray-400">Kondisi Rumah</th>
+            <th class="px-4 py-2 border border-gray-400">Pekerjaan</th>
+            <th class="px-4 py-2 border border-gray-400">Gaji</th>
+            <th class="px-4 py-2 border border-gray-400">Cluster</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for hasil in hasil_duacluster %}
+        <tr>
+            <td class="px-4 py-2 border border-gray-400">{{ loop.index }}</td>
+            <td class="px-4 py-2 border border-gray-400">{{ hasil.data_penerima.nama }}</td>
+            <td class="px-4 py-2 border border-gray-400">{{ hasil.data_penerima.nik }}</td>
+            <td class="px-4 py-2 border border-gray-400">{{ hasil.data_penerima.k_rumah }}</td>
+            <td class="px-4 py-2 border border-gray-400">{{ hasil.data_penerima.pekerjaan }}</td>
+            <td class="px-4 py-2 border border-gray-400">{{ hasil.data_penerima.gaji }}</td>
+            <td class="px-4 py-2 border border-gray-400">{{ hasil.cluster }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<div class="cluster-stats">
+    <h2 class="text-lg font-bold mb-4">Cluster Statistics</h2>
+    <table class="table-auto w-full border-collapse border border-gray-300">
+        <thead>
+            <tr class="bg-gray-100">
+                <th class="border border-gray-300 px-4 py-2 text-left">Cluster</th>
+                <th class="border border-gray-300 px-4 py-2 text-left" colspan="3">Min </th>
+                <th class="border border-gray-300 px-4 py-2 text-left" colspan="3">Max </th>
+                <th class="border border-gray-300 px-4 py-2 text-left" colspan="3">Mean </th>
+                <th class="border border-gray-300 px-4 py-2 text-left">Total Members</th>
+            </tr>
+            <tr>
+                <th class="border border-gray-300 px-4 py-2 text-left"></th>
+                <th class="border border-gray-300 px-4 py-2 text-left">k_rumah</th>
+                <th class="border border-gray-300 px-4 py-2 text-left">gaji</th>
+                <th class="border border-gray-300 px-4 py-2 text-left">pekerjaan</th>
+                <th class="border border-gray-300 px-4 py-2 text-left">k_rumah</th>
+                <th class="border border-gray-300 px-4 py-2 text-left">gaji</th>
+                <th class="border border-gray-300 px-4 py-2 text-left">pekerjaan</th>
+                <th class="border border-gray-300 px-4 py-2 text-left">k_rumah</th>
+                <th class="border border-gray-300 px-4 py-2 text-left">gaji</th>
+                <th class="border border-gray-300 px-4 py-2 text-left">pekerjaan</th>
+                <th class="border border-gray-300 px-4 py-2 text-left"></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for stat in cluster_statsdua %}
+            <tr class="hover:bg-gray-50">
+                <td class="border border-gray-300 px-4 py-2">{{ stat.cluster_id }}</td>
+                <td class="border border-gray-300 px-4 py-2">{{ stat.min[0] | round(2) }}</td>
+                <td class="border border-gray-300 px-4 py-2">{{ stat.min[1] | round(2) }}</td>
+                <td class="border border-gray-300 px-4 py-2">{{ stat.min[2] | round(2) }}</td>
+                <td class="border border-gray-300 px-4 py-2">{{ stat.max[0] | round(2) }}</td>
+                <td class="border border-gray-300 px-4 py-2">{{ stat.max[1] | round(2) }}</td>
+                <td class="border border-gray-300 px-4 py-2">{{ stat.max[2] | round(2) }}</td>
+                <td class="border border-gray-300 px-4 py-2">{{ stat.mean[0] | round(2) }}</td>
+                <td class="border border-gray-300 px-4 py-2">{{ stat.mean[1] | round(2) }}</td>
+                <td class="border border-gray-300 px-4 py-2">{{ stat.mean[2] | round(2) }}</td>
+                <td class="border border-gray-300 px-4 py-2">{{ stat.total }}</td>
+            </tr>
+            {% endfor %}
+            <tr class="hover:bg-gray-50">
+                <th class="border border-gray-300 px-4 py-2">Silhouette Score</th>
+                <td class="border border-gray-300 px-4 py-2" colspan="10">{{ silhouette_avg }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+{% endblock %}

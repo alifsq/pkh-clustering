@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="text-center text-xl font-bold">Dashboard</h1>
+<div class="mt-4 flex space-x-4">
+    <div class="bg-green-500 text-white p-4 rounded shadow-md">
+        <h2 class="text-2xl font-bold">Total Data</h2>
+        <p class="text-xl">{{ total_data }}</p>
+    </div>
+    <div class="bg-blue-500 text-white p-4 rounded shadow-md">
+        <h2 class="text-2xl font-bold">Total Transformed Data</h2>
+        <p class="text-xl">{{ total_transformed_data }}</p>
+    </div>
+</div>
+<div class="mt-4 grid grid-cols-2 gap-4">
+    <!-- Cluster 2 -->
+    <div class="p-6 bg-white rounded-lg shadow-lg flex flex-col items-center justify-center">
+        <h2 class="text-xl font-bold mb-4 text-center">Cluster 2</h2>
+        <div class="w-full">
+            {{ pie_chart2|safe }}
+        </div>
+    </div>
+
+    <!-- Cluster 3 -->
+    <div class="p-6 bg-white rounded-lg shadow-lg flex flex-col items-center justify-center">
+        <h2 class="text-xl font-bold mb-4 text-center">Cluster 3</h2>
+        <div class="w-full">
+            {{ pie_chart3|safe }}
+        </div>
+    </div>
+</div>
+
+    <!-- Pie Chart Section -->
+{% endblock %}

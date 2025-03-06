@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+<h1 class="text-center text-xl font-bold">Pra-Processing Data</h1>
+
+<h2 class="text-lg font-semibold mt-4">Data Transformed</h2>
+<table class="table-auto w-full mt-4 border-collapse border border-gray-400">
+    <thead>
+        <tr>
+            <th class="px-4 py-2 border border-gray-400">Nomor</th>
+            <th class="px-4 py-2 border border-gray-400">Kondisi Rumah</th>
+            <th class="px-4 py-2 border border-gray-400">Pekerjaan</th>
+            <th class="px-4 py-2 border border-gray-400">Gaji</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        {% for data in transformed_data %}
+        <tr>
+            <td class="px-4 py-2 border border-gray-400">{{ loop.index }}</td>
+            <td class="px-4 py-2 border border-gray-400">{{ data.transformed_k_rumah }}</td>
+            <td class="px-4 py-2 border border-gray-400">{{ data.transformed_pekerjaan }}</td>
+            <td class="px-4 py-2 border border-gray-400">{{ data.transformed_gaji }}</td>
+            
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

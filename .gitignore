@@ -1,0 +1,29 @@
+# Mengabaikan folder virtual environment
+.venv
+venv/
+env/
+
+# Mengabaikan file konfigurasi atau kredensial
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+
+# File database SQLite (jika ada)
+instance/
+*.sqlite3
+
+# Log dan cache
+*.log
+*.out
+*.pid
+
+# File yang dibuat oleh editor atau sistem operasi
+.DS_Store
+*.swp
+*.swo
+.idea/
+.vscode/
+
+# Node.js dependencies (jika menggunakan frontend React/Vue)
+node_modules/

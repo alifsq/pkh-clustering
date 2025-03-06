@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% if silhouette_avg is not none %}
+
+<h2 class="text-lg font-semibold mt-4">Detail Silhouette</h2>
+<h3 class="text-lg font-semibold mt-4">Silhouette Coefficient: {{ silhouette_avg }}</h3>
+<table class="table-auto w-full mt-4 border-collapse border border-gray-400">
+    <thead>
+        <tr>
+            <th class="px-4 py-2 border border-gray-400">Nomor</th>
+            <th class="px-4 py-2 border border-gray-400">Data Point</th>
+            <th class="px-4 py-2 border border-gray-400">a(i)</th>
+            <th class="px-4 py-2 border border-gray-400">b(i)</th>
+            <th class="px-4 py-2 border border-gray-400">s(i)</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for result in results %}
+        <tr>
+            <td class="px-4 py-2 border border-gray-400">{{ loop.index }}</td>
+            <td class="px-4 py-2 border border-gray-400">{{ result.data_point }}</td>
+            <td class="px-4 py-2 border border-gray-400">{{ result.a_i }}</td>
+            <td class="px-4 py-2 border border-gray-400">{{ result.b_i }}</td>
+            <td class="px-4 py-2 border border-gray-400">{{ result.s_i }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>Silhouette Coefficient belum tersedia. Silakan lakukan clustering terlebih dahulu.</p>
+{% endif %}
+{% endblock %}

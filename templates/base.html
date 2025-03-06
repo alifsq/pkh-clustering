@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>PKHApps</title>
+        <link href="{{ url_for('static', filename='css/output.css') }}" rel="stylesheet">
+        <style>
+            /* CSS Custom untuk Active State */
+            .active {
+              background-color: #43abf1;
+              /* bg-green-500 */
+            }
+        </style>
+    </head>
+    <body>
+        <div id="header" class="p-4 text-center bg-gray-200 shadow-2xl flex items-center transition-transform duration-300 fixed top-0 left-0 w-full transform ">
+            <button id="sidebarToggle" class="text-3xl mr-4" onclick="toggleSidebar()">&#9776;</button>
+            <h1 class="text-xl font-bold">PKH Clustering APPS</h1>
+        </div>
+        <div class="flex mt-16">
+            <!-- Sidebar tetap di kiri -->
+            <div id="sidebar" class="w-64 bg-gray-500 text-white h-screen fixed top-0 left-0 transform -translate-x-full transition-transform duration-300">
+                <nav class="mt-4 text-center p-4">
+                    <ul>
+                        <li class="mb-2">
+                            <a href="/dashboard" class="block py-2 px-4 hover:bg-blue-300 rounded {% if request.path == '/dashboard' %}active{% endif %}">Dashboard</a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="/inputdata" class="block py-2 px-4 hover:bg-blue-300 rounded {% if request.path == '/inputdata' %}active{% endif %}">Input Data</a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="/praproses" class="block py-2 px-4 hover:bg-blue-300 rounded {% if request.path == '/praproses' %}active{% endif %}">Pra Processing</a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="/2cluster" class="block py-2 px-4 hover:bg-blue-300 rounded {% if request.path == '/2cluster' %}active{% endif %}">2 Cluster</a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="/3cluster" class="block py-2 px-4 hover:bg-blue-300 rounded {% if request.path == '/3cluster' %}active{% endif %}">3 Cluster</a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="/pengujian" class="block py-2 px-4 hover:bg-blue-300 rounded {% if request.path == '/clustering' %}active{% endif %}">Pengujian</a>
+                        </li>
+                        <li class="mt-auto mb-2 bg-red-500 rounded-lg">
+                            <a href="{{ url_for('logout') }}" class="block py-2 px-4 hover:bg-red-700">Log Out</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <!-- Konten utama di sebelah kanan -->
+            <div id="main-content" class="flex-1 p-8 ml-0 transition-all duration-300">
+                {% block content %}
+                <!-- Content goes here -->
+                {% endblock %}
+            </div>
+        </div>
+        <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+    </body>
+</html>
