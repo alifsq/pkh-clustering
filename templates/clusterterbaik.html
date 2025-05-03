@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %} 
+
+<h1 class="text-center text-xl font-bold">Cluster Terbaik</h1>
+<div class="text-right mt-4">
+    <form action="{{ url_for('pengujian') }}" method="post">
+        <button type="submit" class="bg-blue-400 p-4 rounded text-xl hover:bg-slate-600 text-white">Pengujian Cluster Terbaik >> </button>
+    </form>
+</div>
+<table class="table-auto w-full mt-4 border-collapse border border-gray-400">
+    <thead>
+        <tr>
+            <th class="px-4 py-2 border border-gray-400">Nomor</th>
+            <th class="px-4 py-2 border border-gray-400">Nama</th>
+            <th class="px-4 py-2 border border-gray-400">NIK</th>
+            <th class="px-4 py-2 border border-gray-400">Kondisi Rumah</th>
+            <th class="px-4 py-2 border border-gray-400">Pekerjaan</th>
+            <th class="px-4 py-2 border border-gray-400">Gaji</th>
+            <th class="px-4 py-2 border border-gray-400">Cluster</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for data in data_penerima %}
+        <tr>
+            <td class="px-4 py-2 border border-gray-400">{{ loop.index }}</td>
+            <td class="px-4 py-2 border border-gray-400">{{ data.nama }}</td>
+            <td class="px-4 py-2 border border-gray-400">{{ data.nik }}</td>
+            <td class="px-4 py-2 border border-gray-400">{{ data.k_rumah }}</td>
+            <td class="px-4 py-2 border border-gray-400">{{ data.pekerjaan }}</td>
+            <td class="px-4 py-2 border border-gray-400" id="g">{{ data.gaji }}</td>
+            <td class="px-4 py-2 border border-gray-400" id="g">{{ data.cluster}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+
+    
+{% endblock %}

@@ -46,20 +46,8 @@ class TransformedData(db.Model):
     transformed_pekerjaan = db.Column(db.Integer, nullable=False)
     def __repr__(self):
         return f"<TransformedData {self.id_transform}>"
-  
-class Hasilduacluster(db.Model):
-    __tablename__ = 'hasilduacluster'
-    id = db.Column(db.Integer, primary_key=True)
-    id_penerima = db.Column(db.Integer, db.ForeignKey('datapenerima.id_penerima'), nullable=False)
-    cluster = db.Column(db.Integer, nullable=False)
-    data_penerima = db.relationship('DataPenerima', backref='hasilduacluster')
 
-class Hasiltigacluster(db.Model):
-    __tablename__ = 'hasiltigacluster'
-    id = db.Column(db.Integer, primary_key=True)
-    id_penerima = db.Column(db.Integer, db.ForeignKey('datapenerima.id_penerima'), nullable=False)
-    cluster = db.Column(db.Integer, nullable=False)
-    data_penerima = db.relationship('DataPenerima', backref='hasiltigacluster')
+
     
 class HasilClustering(db.Model):
     __tablename__ = 'hasil_clustering'

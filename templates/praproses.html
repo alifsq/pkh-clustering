@@ -2,6 +2,12 @@
 {% block content %}
 <h1 class="text-center text-xl font-bold">Pra-Processing Data</h1>
 
+<div class="text-right mt-4">
+    <form action="{{ url_for('ujicoba') }}" method="post">
+        <button type="submit" class="bg-blue-400 p-4 rounded text-xl hover:bg-slate-600 text-white">Uji Coba Cluster >> </button>
+    </form>
+</div>
+
 <h2 class="text-lg font-semibold mt-4">Data Transformed</h2>
 <table class="table-auto w-full mt-4 border-collapse border border-gray-400">
     <thead>

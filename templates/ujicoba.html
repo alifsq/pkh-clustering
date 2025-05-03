@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="text-right mt-4">
+    <form action="{{ url_for('clusterterbaik') }}" method="post">
+        <button type="submit"
+            class="bg-blue-400 p-4 rounded text-xl hover:bg-slate-600 text-white">Hasil
+            Cluster Terbaik >></button>
+    </form>
+</div>
+
+<div
+    class="flex bg-white rounded-lg shadow-lg flex-col items-center justify-center w-24">
+    <h2 class="text-xl font-bold mb-4 text-center">Uji Coba Banyaknya Cluster 2
+        - 10</h2>
+    <div class="w-32 mb-8">{{ graph_html|safe }}</div>
+</div>
+<div
+    class="flex bg-white rounded-lg shadow-lg flex-col items-center justify-center w-24">
+    <h2 class="text-xl font-bold mb-2 text-center ">Persebaran Cluster terbaik {{ best_cluster }}</h2>
+    <div class="w-32">{{ cluster_bar_html|safe }}</div>
+</div>
+
+{% if best_cluster %}
+<p class="mt-4 text-lg font-semibold">Cluster terbaik: {{ best_cluster }}
+    (Silhouette: {{ max_score }})</p>
+{% endif %}
+
+<table class="table-auto w-full mt-4 border-collapse border border-gray-400">
+    <thead>
+        <tr>
+            <th class="px-4 py-2 border border-gray-400">Banyak Cluster</th>
+            <th class="px-4 py-2 border border-gray-400">Silhouette Score</th>
+            <th class="px-4 py-2 border border-gray-400">Jumlah Iterasi</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in results %}
+        <tr>
+            <td class="px-4 py-2 border border-gray-400">{{ item.cluster }}</td>
+            <td class="px-4 py-2 border border-gray-400">{{ item.silhouette
+                }}</td>
+            <td class="px-4 py-2 border border-gray-400">{{ item.iterations
+                }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

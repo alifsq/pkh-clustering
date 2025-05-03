@@ -12,23 +12,10 @@
         <p class="text-xl">{{ total_transformed_data }}</p>
     </div>
 </div>
-<div class="mt-4 grid grid-cols-2 gap-4">
-    <!-- Cluster 2 -->
-    <div class="p-6 bg-white rounded-lg shadow-lg flex flex-col items-center justify-center">
-        <h2 class="text-xl font-bold mb-4 text-center">Cluster 2</h2>
-        <div class="w-full">
-            {{ pie_chart2|safe }}
-        </div>
-    </div>
-
-    <!-- Cluster 3 -->
-    <div class="p-6 bg-white rounded-lg shadow-lg flex flex-col items-center justify-center">
-        <h2 class="text-xl font-bold mb-4 text-center">Cluster 3</h2>
-        <div class="w-full">
-            {{ pie_chart3|safe }}
-        </div>
-    </div>
+<div
+    class="flex bg-white rounded-lg shadow-lg flex-col items-center justify-center w-24">
+    <h2 class="text-xl font-bold mb-4 text-center">Cluster Terbaik {{best_cluster }}
+        - 10</h2>
+    <div class="w-32 mb-8">{{ graph_pie|safe }}</div>
 </div>
-
-    <!-- Pie Chart Section -->
 {% endblock %}
